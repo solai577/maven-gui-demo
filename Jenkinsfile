@@ -1,12 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven'
-    }
-
     stages {
-
         stage('Clone') {
             steps {
                 git 'https://github.com/solai577/maven-gui-demo.git'
@@ -15,13 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat 'mvn test'
+                sh 'mvn clean install'
             }
         }
     }
